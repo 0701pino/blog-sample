@@ -2,7 +2,7 @@ version: "3"
 
 services:
   next_app:
-    container_name: next_app
+    container_name: blog
     user: "node"
 
     build:
@@ -33,7 +33,7 @@ services:
 
 volumes:
   node_modules:
-    name: next_app_node_modules
+    name: blog_node_modules
 
 networks:
   next_app_network:
