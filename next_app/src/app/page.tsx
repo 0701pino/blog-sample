@@ -1,5 +1,5 @@
-import Image from "next/image";
+const Home: React.FC = () => {
+  return <>top page content</>;
+};
 
-export default function Home() {
-  return <main>main contents</main>;
-}
+export default Home;
