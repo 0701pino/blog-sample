@@ -25,6 +25,6 @@
         "uriFormat": "%s",
         "action": "debugWithChrome"
       }
-    },
+    }
   ]
 }

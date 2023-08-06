@@ -15,7 +15,7 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <title>Home</title>
       </Head>
       <body>
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen bg-gray-100 ">
           <Header />
           <main className="flex flex-col items-center flex-1">{children}</main>
           <Footer />

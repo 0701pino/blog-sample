@@ -1,7 +1,11 @@
 import Image from "next/image";
-const Home: React.FC = () => {
+import { getTopPosts } from "./helper/get_top_contents";
+import LatestPosts from "./components/LatestPosts";
+
+const Home: React.FC = async () => {
+  const latestPosts = await getTopPosts();
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <Image
         src="/images/top.png"
         alt="banner"
@@ -9,7 +13,12 @@ const Home: React.FC = () => {
         height={378}
         className="max-w-[720px] w-[80vw] m-5"
       />
-      top page content
+      <div className="max-w-[90%]">
+        <LatestPosts latestPosts={latestPosts} />
+      </div>
+      {/* {latestPosts.map((post) => (
+        <LatestPost key={post.slug} post={post} />
+      ))} */}
     </div>
   );
 };
