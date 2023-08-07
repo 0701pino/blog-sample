@@ -8,11 +8,11 @@ const TOP_POSTS_LIMIT = 4;
 export type PostData = {
   slug: string;
   title: string;
-  description: string;
+  description?: string;
   createdAt: string;
   updatedAt: string;
-  image: String;
-  emoji: string;
+  image?: String;
+  emoji?: string;
   content: string;
 };
 
@@ -36,6 +36,7 @@ export const getTopPosts = async (): Promise<PostData[]> => {
         return {
           slug: path.basename(fileName, ".md"),
           title: data.title,
+          image: data.image,
           description: data.description,
           createdAt: data.createdAt,
           updatedAt: data.updatedAt,
