@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { getTopPosts } from "./helper/get_top_contents";
-import LatestPosts from "./components/LatestPosts";
+import { getTopPosts } from "./helper/get-top-contents";
+import LatestPosts from "./components/latest-posts";
 
 const Home: React.FC = async () => {
   const latestPosts = await getTopPosts();

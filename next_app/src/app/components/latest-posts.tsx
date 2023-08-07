@@ -1,4 +1,4 @@
-import { PostData } from "../helper/get_top_contents";
+import { PostData } from "../helper/get-top-contents";
 import { MdAccessTime, MdUpdate } from "react-icons/md";
 import Image from "next/image";
 interface LatestPostsProps {
@@ -31,15 +31,15 @@ const LatestPosts: React.FC<LatestPostsProps> = ({ latestPosts }) => {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
                 <p className="mt-3 text-base text-gray-600">
-                  {item.description.length > 50
-                    ? `${item.description.substring(0, 50)}...`
+                  {item.description && item.description?.length > 50
+                    ? `${item.description?.substring(0, 50)}...`
                     : item.description}
                 </p>
               </div>
             </div>
             <div className="relative h-48 w-full object-cover sm:h-56">
               <Image
-                src={item.image ? `/images/${item.image}` : "/images/no_image.png"}
+                src={item.image ? `/images/${item.image}` : "/images/no-image.png"}
                 alt=""
                 layout="fill"
                 className="object-cover"
