@@ -10,8 +10,8 @@ export type PostData = {
   title: string;
   description?: string;
   createdAt: string;
-  updatedAt: string;
-  image?: String;
+  updatedAt?: string;
+  image?: string;
   emoji?: string;
   content: string;
 };
@@ -23,15 +23,28 @@ export const getTopPosts = async (): Promise<PostData[]> => {
   const fileNames = await fs.readdir(postsDirectory);
 
   // Promise.allを使用して非同期操作を並列に実行します。
-  const allPosts = await Promise.all(
+  const allPostsRaw = await Promise.all(
     fileNames
       .filter((filename) => path.extname(filename) === ".md")
-      .map(async (fileName) => {
+      .map(async (fileName): Promise<PostData | null> => {
         const fullPath = path.join(postsDirectory, fileName);
-
         const fileContents = await fs.readFile(fullPath, "utf8");
 
-        const { data, content } = matter(fileContents);
+        type PostMetaData = {
+          title?: string;
+          description?: string;
+          createdAt?: string;
+          updatedAt?: string;
+          image?: string;
+          emoji?: string;
+          [key: string]: string | undefined;
+        };
+
+        const { data, content }: { data: PostMetaData; content: string } = matter(fileContents);
+
+        if (!data.title || !data.createdAt) {
+          return null;
+        }
 
         return {
           slug: path.basename(fileName, ".md"),
@@ -45,6 +58,8 @@ export const getTopPosts = async (): Promise<PostData[]> => {
         };
       }),
   );
+
+  const allPosts = allPostsRaw.filter((post): post is PostData => post !== null); // nullをフィルタリングして、正常なデータのみを保持します。
 
   const sortedPosts = allPosts.sort((a, b) => {
     if (a.createdAt < b.createdAt) return 1;
