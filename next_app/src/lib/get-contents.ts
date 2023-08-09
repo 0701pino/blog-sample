@@ -1,22 +1,12 @@
 import fs from "fs/promises";
 import path from "path";
 import matter from "gray-matter";
+import { PostData } from "@/types/post-data";
 
-const TOP_POSTS_LIMIT = 4;
+const TOP_POSTS_LIMIT = 3;
+const PAGE_POSTS_LIMIT = 6;
 
-//
-export type PostData = {
-  slug: string;
-  title: string;
-  description?: string;
-  createdAt: string;
-  updatedAt?: string;
-  image?: string;
-  emoji?: string;
-  content: string;
-};
-
-export const getTopPosts = async (): Promise<PostData[]> => {
+export const getAllPosts = async (): Promise<PostData[]> => {
   const postsDirectory = path.join(process.cwd(), "./posts");
 
   // fs.promises.readdirは指定したディレクトリ内の全てのファイルの名前を非同期的に返します。
@@ -66,6 +56,32 @@ export const getTopPosts = async (): Promise<PostData[]> => {
     if (a.createdAt > b.createdAt) return -1;
     return 0;
   });
+  return sortedPosts;
+};
 
-  return sortedPosts.slice(0, TOP_POSTS_LIMIT);
+export const getTopPosts = async (): Promise<PostData[]> => {
+  const allPosts = await getAllPosts();
+  if (allPosts) {
+    return allPosts.slice(0, TOP_POSTS_LIMIT);
+  } else {
+    return [];
+  }
+};
+
+export const getPageContents = async (
+  page: number,
+): Promise<{ pagePosts: PostData[]; maxPage: number }> => {
+  const allPosts = await getAllPosts();
+  const maxPage = Math.ceil(allPosts.length / PAGE_POSTS_LIMIT);
+  if (allPosts) {
+    const startIndex = (page - 1) * PAGE_POSTS_LIMIT;
+    const endIndex = startIndex + PAGE_POSTS_LIMIT;
+    const postsForCurrentPage = allPosts.slice(startIndex, endIndex);
+    return {
+      pagePosts: postsForCurrentPage,
+      maxPage: maxPage,
+    };
+  } else {
+    return { pagePosts: [], maxPage: maxPage };
+  }
 };

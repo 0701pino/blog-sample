@@ -1,14 +1,15 @@
-import { PostData } from "../helper/get-top-contents";
+import { PostData } from "@/types/post-data";
 import { MdAccessTime, MdUpdate } from "react-icons/md";
+
 import Image from "next/image";
-interface LatestPostsProps {
-  latestPosts: PostData[];
+interface PagePostsProps {
+  pagePosts: PostData[];
 }
 
-const LatestPosts: React.FC<LatestPostsProps> = ({ latestPosts }) => {
+const PagePosts: React.FC<PagePostsProps> = ({ pagePosts }) => {
   return (
     <div className="max-w-md mx-auto grid gap-6 lg:grid-cols-3 lg:max-w-7xl ">
-      {latestPosts.map((item) => (
+      {pagePosts.map((item) => (
         <a
           key={item.slug}
           href={item.slug}
@@ -52,4 +53,4 @@ const LatestPosts: React.FC<LatestPostsProps> = ({ latestPosts }) => {
   );
 };
 
-export default LatestPosts;
+export default PagePosts;
