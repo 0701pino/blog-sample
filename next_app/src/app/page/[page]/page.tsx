@@ -8,7 +8,7 @@ export default async function CurrentPage({ params }: { params: { page: string }
   console.log(maxPage);
   return (
     <>
-      <div className="flex flex-col items-center m-5">
+      <div className="flex flex-col items-center  ">
         <div className="max-w-[90%]">
           <PagePosts pagePosts={pagePosts} />
         </div>

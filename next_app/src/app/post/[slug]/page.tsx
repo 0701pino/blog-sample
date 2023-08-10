@@ -13,7 +13,7 @@ export default async function PageDetail({ params }: { params: { slug: string } 
   return (
     <>
       <div className="p-3">
-        <div className="flex justify-center max-w-full m-5">
+        <div className="flex justify-center max-w-full">
           <Image
             src={post.image ? `/images/${post.image}` : "/images/no-image.png"}
             alt=""
