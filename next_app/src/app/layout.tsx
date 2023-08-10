@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
+import Link from "next/link";
+
 export const metadata: Metadata = {
   title: "Pino blog",
   description: "Blog Sample",
@@ -29,10 +31,12 @@ export const Header: React.FC = () => {
   return (
     <header className="flex items-center justify-between p-4 bg-gray-200">
       <div className="flex items-center justify-center flex-grow">
-        <div className="flex items-center mr-2">
-          <Image src="/images/logo.png" alt="" width="32" height="32" />
-          <h1 className="ml-3 text-lg font-bold">Pino blog</h1>
-        </div>
+        <Link href="/">
+          <div className="flex items-center mr-2">
+            <Image src="/images/logo.png" alt="" width="32" height="32" />
+            <h1 className="ml-3 text-lg font-bold">Pino blog</h1>
+          </div>
+        </Link>
       </div>
       {/* <div>Link</div> */}
     </header>
