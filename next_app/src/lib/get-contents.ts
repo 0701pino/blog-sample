@@ -85,3 +85,17 @@ export const getPageContents = async (
     return { pagePosts: [], maxPage: maxPage };
   }
 };
+
+export const getContent = async (slug: string): Promise<PostData | null> => {
+  const allPosts = await getAllPosts();
+  if (allPosts) {
+    const post = allPosts.find((p) => p.slug === slug);
+
+    if (!post) {
+      return null;
+    }
+    return post;
+  } else {
+    return null;
+  }
+};

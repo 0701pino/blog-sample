@@ -1,6 +1,7 @@
 import { PostData } from "@/types/post-data";
 import { MdAccessTime, MdUpdate } from "react-icons/md";
 import Image from "next/image";
+import { formatDate } from "@/lib/util";
 
 interface LatestPostsProps {
   latestPosts: PostData[];
@@ -12,7 +13,7 @@ const LatestPosts: React.FC<LatestPostsProps> = ({ latestPosts }) => {
       {latestPosts.map((item) => (
         <a
           key={item.slug}
-          href={item.slug}
+          href={"/post/" + item.slug}
           className="flex flex-col rounded-lg bg-white overflow-hidden hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
         >
           <div className="flex flex-col-reverse">
@@ -21,12 +22,12 @@ const LatestPosts: React.FC<LatestPostsProps> = ({ latestPosts }) => {
                 <div className="flex space-x-4 items-center">
                   <div className="flex items-center space-x-2">
                     <MdAccessTime />
-                    <p className="text-base text-gray-600">{item.createdAt}</p>
+                    <p className="text-base text-gray-600">{formatDate(item.createdAt)}</p>
                   </div>
                   {item.updatedAt && item.createdAt !== item.updatedAt && (
                     <div className="flex items-center space-x-2">
                       <MdUpdate />
-                      <p className="text-base text-gray-600">{item.updatedAt}</p>
+                      <p className="text-base text-gray-600">{formatDate(item.updatedAt)}</p>
                     </div>
                   )}
                 </div>
