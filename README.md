@@ -16,16 +16,16 @@ DevContainerとDocker Composeを使用したNext.js用テンプレートです�
 - コンテナユーザー: node
 - 作業ディレクトリ: /workspace/next_app
 
-## バージョン
+## 使用パッケージバージョン
 
-使用しているバージョンは以下の通りです。
+使用しているパッケージバージョンは以下の通りです。
 
 - node: v18.12.1
 - yarn: 1.22.19
-- next: 13.4.9
+- next: 13.4.13
 - react: 18.2.0
 - typescript: 5.1.6
-- tailwindcss: 3.3.2
+- tailwindcss: 3.3.3
 
 ### Visual Studio Code 拡張機能
 
