@@ -9,7 +9,7 @@ const Pagination = ({ currentPage, maxPage }: { currentPage: number; maxPage: nu
       {pages.map((page, index) =>
         typeof page === "string" ? (
           <span key={"page_" + index} className="mx-2">
-            page
+            {page}
           </span>
         ) : (
           <Link
@@ -36,7 +36,7 @@ const generatePaginationArray = (currentPage: number, maxPage: number): (number 
   }
 
   if (currentPage > 4) {
-    paginationArray.push("...");
+    paginationArray.push("･･･");
   }
 
   for (let i = Math.max(2, currentPage - 2); i <= Math.min(maxPage - 1, currentPage + 2); i++) {
@@ -44,7 +44,7 @@ const generatePaginationArray = (currentPage: number, maxPage: number): (number 
   }
 
   if (currentPage < maxPage - 3) {
-    paginationArray.push("...");
+    paginationArray.push("･･･");
   }
 
   paginationArray.push(maxPage);
