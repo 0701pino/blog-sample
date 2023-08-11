@@ -2,7 +2,6 @@ import "@/app/styles/globals.css";
 import Link from "next/link";
 
 const Pagination = ({ currentPage, maxPage }: { currentPage: number; maxPage: number }) => {
-  console.log(currentPage);
   const pages = generatePaginationArray(currentPage, maxPage);
 
   return (
