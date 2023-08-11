@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { getTopPosts } from "@/lib/get-contents";
-import LatestPosts from "@/components/latest-posts";
+import Link from "next/link";
+import PostList from "@/components/post-list";
 
 const Home: React.FC = async () => {
-  const latestPosts = await getTopPosts();
+  const pagePosts = await getTopPosts();
   return (
     <div className="flex flex-col items-center">
       <Image
@@ -13,13 +14,15 @@ const Home: React.FC = async () => {
         height={378}
         className="max-w-[720px] w-[80vw] m-5"
       />
-      <div className="max-w-[90%] mb-6">
-        <LatestPosts latestPosts={latestPosts} />
+      <div className="mb-6">
+        <PostList posts={pagePosts} />
       </div>
-      {/* "View All Posts" button */}
-      <a href="/page/1" className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
+      <Link
+        href="/page/1"
+        className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700"
+      >
         すべての記事を見る
-      </a>
+      </Link>
     </div>
   );
 };

@@ -1,18 +1,20 @@
 import Pagination from "@/components/pagination";
-import PagePosts from "@/components/page-posts";
+import PostList from "@/components/post-list";
 import { getPageContents } from "@/lib/get-contents";
 
-export default async function CurrentPage({ params }: { params: { page: string } }) {
+const CurrentPage = async ({ params }: { params: { page: string } }) => {
   const currentPage = Number.parseInt(params.page);
   const { pagePosts, maxPage } = await getPageContents(currentPage);
   return (
     <>
       <div className="flex flex-col items-center  ">
-        <div className="max-w-[90%]">
-          <PagePosts pagePosts={pagePosts} />
+        <div className="mb-6">
+          <PostList posts={pagePosts} />
         </div>
       </div>
       <Pagination maxPage={maxPage} currentPage={currentPage}></Pagination>
     </>
   );
-}
+};
+
+export default CurrentPage;
