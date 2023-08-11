@@ -19,11 +19,14 @@ export default async function PageDetail({ params }: { params: { slug: string } 
             alt=""
             width={720}
             height={378}
-            layout="responsive"
+            sizes="100vw"
+            style={{
+              width: "100%",
+              height: "auto",
+            }}
           />
         </div>
 
-        {/* Title */}
         <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
 
         <div className="mt-4 mb-4 flex justify-end">

@@ -43,9 +43,9 @@ const PagePosts: React.FC<PagePostsProps> = ({ pagePosts }) => {
               <Image
                 src={item.image ? `/images/${item.image}` : "/images/no-image.png"}
                 alt=""
-                layout="fill"
                 className="object-cover"
-              />
+                fill
+                sizes="100vw" />
             </div>
           </div>
         </a>
