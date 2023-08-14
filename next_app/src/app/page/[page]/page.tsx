@@ -1,6 +1,7 @@
 import Pagination from "@/components/pagination";
 import PostList from "@/components/post-list";
-import { getPageContents } from "@/lib/get-contents";
+import { PAGE_POSTS_LIMIT } from "@/lib/config";
+import { getAllPosts, getPageContents } from "@/lib/get-contents";
 
 const CurrentPage = async ({ params }: { params: { page: string } }) => {
   const currentPage = Number.parseInt(params.page);
@@ -18,3 +19,16 @@ const CurrentPage = async ({ params }: { params: { page: string } }) => {
 };
 
 export default CurrentPage;
+
+type PageParams = {
+  page: string;
+}[];
+
+// App RouterではgetStaticPathsの代わりにgenerateStaticParamsを使う
+export async function generateStaticParams(): Promise<PageParams> {
+  const allPosts = await getAllPosts();
+  const maxPage = Math.ceil(allPosts.length / PAGE_POSTS_LIMIT);
+  return Array.from({ length: maxPage }, (_, i) => ({
+    page: String(i + 1),
+  }));
+}

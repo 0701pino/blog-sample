@@ -18,7 +18,7 @@ const Home: React.FC = async () => {
         <PostList posts={pagePosts} />
       </div>
       <Link
-        href="/page/1"
+        href="/page/1.html"
         className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700"
       >
         すべての記事を見る

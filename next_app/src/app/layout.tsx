@@ -35,7 +35,7 @@ export const Header: React.FC = () => {
       <div className="flex items-center justify-center flex-grow">
         <Link href="/">
           <div className="flex items-center mr-2">
-            <Image src="/images/logo.png" alt="" width="32" height="32" />
+            <Image src="/images/logo.png" alt="" width={32} height={32} className="max-w-[32px]" />
             <h1 className="ml-3 text-lg font-bold">Pino blog</h1>
           </div>
         </Link>

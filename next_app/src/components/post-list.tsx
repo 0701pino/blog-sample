@@ -13,7 +13,7 @@ const PostList: React.FC<PostListProps> = ({ posts: posts }) => {
       {posts.map((item) => (
         <a
           key={item.slug}
-          href={"/post/" + item.slug}
+          href={"/post/" + item.slug + ".html"}
           className="flex flex-col rounded-lg bg-white overflow-hidden hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
           style={{ height: "auto" }}
         >
@@ -46,8 +46,8 @@ const PostList: React.FC<PostListProps> = ({ posts: posts }) => {
                 alt=""
                 className="object-cover w-full"
                 layout="responsive"
-                width={720}
-                height={378}
+                width={1200}
+                height={630}
               />
             </div>
           </div>

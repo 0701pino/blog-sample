@@ -1,6 +1,6 @@
 import "zenn-content-css";
 import Image from "next/image";
-import { getContent } from "@/lib/get-contents";
+import { getAllPosts, getContent } from "@/lib/get-contents";
 import markdownToHtml from "zenn-markdown-html";
 import { formatDate } from "@/lib/util";
 
@@ -47,4 +47,16 @@ export default async function PageDetail({ params }: { params: { slug: string } 
       </div>
     </>
   );
+}
+
+type SlugParams = {
+  slug: string;
+}[];
+
+// App RouterではgetStaticPathsの代わりにgenerateStaticParamsを使う
+export async function generateStaticParams(): Promise<SlugParams> {
+  const allPosts = await getAllPosts();
+  return allPosts.map((post) => ({
+    slug: post.slug,
+  }));
 }

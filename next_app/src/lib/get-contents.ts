@@ -2,9 +2,7 @@ import fs from "fs/promises";
 import path from "path";
 import matter from "gray-matter";
 import { PostData } from "@/types/post-data";
-
-const TOP_POSTS_LIMIT = 3;
-const PAGE_POSTS_LIMIT = 6;
+import { TOP_POSTS_LIMIT, PAGE_POSTS_LIMIT } from "./config";
 
 export const getAllPosts = async (): Promise<PostData[]> => {
   const postsDirectory = path.join(process.cwd(), "./posts");
