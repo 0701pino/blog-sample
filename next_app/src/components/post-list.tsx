@@ -13,7 +13,7 @@ const PostList: React.FC<PostListProps> = ({ posts: posts }) => {
       {posts.map((item) => (
         <a
           key={item.slug}
-          href={"/post/" + item.slug + ".html"}
+          href={"/post/" + item.slug}
           className="flex flex-col rounded-lg bg-white overflow-hidden hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
           style={{ height: "auto" }}
         >
