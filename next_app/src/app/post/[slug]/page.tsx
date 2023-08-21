@@ -1,6 +1,6 @@
 import "zenn-content-css";
 import Image from "next/image";
-import { getAllPosts, getContent } from "@/lib/get-contents";
+import { getAllPosts, getContent, getImageAttributes } from "@/lib/get-contents";
 import markdownToHtml from "zenn-markdown-html";
 import { formatDate } from "@/lib/util";
 
@@ -10,24 +10,27 @@ export default async function PageDetail({ params }: { params: { slug: string } 
     return <>not-found</>;
   }
   const content = markdownToHtml(post.content || "");
+
+  const { imageSrc, imageSize } = getImageAttributes(post.emoji, post.image);
+
   return (
     <>
       <div className="p-3">
         <div className="flex justify-center max-w-full">
           <Image
-            src={post.image ? `/images/${post.image}` : "/images/no-image.png"}
+            src={imageSrc}
             alt=""
             width={720}
             height={378}
-            sizes="100vw"
+            sizes="50vw"
             style={{
-              width: "100%",
+              width: `${imageSize}`,
               height: "auto",
             }}
           />
         </div>
 
-        <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
+        <h1 className="text-4xl font-bold my-4">{post.title}</h1>
 
         <div className="mt-4 mb-4 flex justify-end">
           <div>{`作成日: ${formatDate(post.createdAt, true)}`}</div>

@@ -97,3 +97,22 @@ export const getContent = async (slug: string): Promise<PostData | null> => {
     return null;
   }
 };
+
+type ImageAttributes = {
+  imageSrc: string;
+  imageSize: string;
+};
+
+export const getImageAttributes = (emoji?: string, image?: string): ImageAttributes => {
+  const emojiImagePath = emoji?.codePointAt(0)?.toString(16).toLowerCase();
+
+  const imageSrc = image
+    ? `/images/${image}`
+    : emojiImagePath
+    ? `/emoji/emoji_u${emojiImagePath}.svg`
+    : "/images/no-image.png";
+
+  const imageSize = image ? "100vw" : emojiImagePath ? "35%" : "100vw";
+
+  return { imageSrc, imageSize };
+};
