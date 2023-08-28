@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getAllPosts, getContent, getImageAttributes } from "@/lib/get-contents";
 import markdownToHtml from "zenn-markdown-html";
 import { formatDate } from "@/lib/util";
+import { BASE_PATH } from "@/lib/config";
 
 export default async function PageDetail({ params }: { params: { slug: string } }) {
   const post = await getContent(params.slug);
@@ -18,7 +19,7 @@ export default async function PageDetail({ params }: { params: { slug: string } 
       <div className="p-3">
         <div className="flex justify-center max-w-full">
           <Image
-            src={imageSrc}
+            src={`${BASE_PATH}${imageSrc}`}
             alt=""
             width={720}
             height={378}

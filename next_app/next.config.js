@@ -1,17 +1,10 @@
 /** @type {import('next').NextConfig} */
 const withExportImages = require("next-export-optimize-images");
-const CheckImageExistencePlugin = require("./plugin/check-image-existance.js");
+const basePath = process.env.URL_PREFIX ? process.env.URL_PREFIX : "";
 
 const nextConfig = withExportImages({
   output: "export",
-  experimental: {
-    appDir: true,
-  },
-  webpack(config) {
-    // 絵文字ファイルが存在するかチェックするカスタムプラグインの追加
-    config.plugins.push(new CheckImageExistencePlugin());
-    return config;
-  },
+  basePath: basePath,
 });
 
 module.exports = nextConfig;

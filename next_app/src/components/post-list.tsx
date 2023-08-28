@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { formatDate } from "@/lib/util";
 import { getImageAttributes } from "@/lib/get-contents";
+import { BASE_PATH } from "@/lib/config";
 
 interface PostListProps {
   posts: PostData[];
@@ -48,7 +49,7 @@ const PostList: React.FC<PostListProps> = ({ posts: posts }) => {
                   </div>
                   <div className="relative w-full flex justify-center">
                     <Image
-                      src={imageSrc}
+                      src={`${BASE_PATH}${imageSrc}`}
                       alt=""
                       className="object-cover w-full"
                       width={1200}

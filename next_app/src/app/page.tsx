@@ -2,13 +2,14 @@ import Image from "next/image";
 import { getTopPosts } from "@/lib/get-contents";
 import Link from "next/link";
 import PostList from "@/components/post-list";
+import { BASE_PATH } from "@/lib/config";
 
 const Home: React.FC = async () => {
   const pagePosts = await getTopPosts();
   return (
     <div className="flex flex-col items-center">
       <Image
-        src="/images/top.png"
+        src={`${BASE_PATH}/images/top.png`}
         alt="banner"
         width={720}
         height={378}
