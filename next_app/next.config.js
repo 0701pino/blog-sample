@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 const withExportImages = require("next-export-optimize-images");
-const basePath = process.env.URL_PREFIX ? process.env.URL_PREFIX : "";
+const SUB_DIRECTORY = "/blog-sample";
+
+const isProd = process.env.NODE_ENV == "production";
 
 const nextConfig = withExportImages({
   output: "export",
-  basePath: basePath,
+  basePath: isProd ? SUB_DIRECTORY : "",
 });
 
 module.exports = nextConfig;

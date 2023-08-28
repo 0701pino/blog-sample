@@ -2,9 +2,12 @@
  * @type {import('next-export-optimize-images').Config}
  */
 
-const basePath = process.env.URL_PREFIX ? process.env.URL_PREFIX : "";
+const SUB_DIRECTORY = "/blog-sample";
+
+const isProd = process.env.NODE_ENV == "production";
+
 const config = {
-  basePath: basePath,
+  basePath: isProd ? SUB_DIRECTORY : "",
 };
 
 module.exports = config;
