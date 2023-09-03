@@ -1,4 +1,4 @@
-import { BASE_PATH } from "@/lib/config";
+import { BASE_PATH, BASE_URL } from "@/lib/config";
 import "./styles/globals.css";
 import type { Metadata } from "next";
 import Head from "next/head";
@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: "Pino blog",
   description: "Blog Sample",
 };

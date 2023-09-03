@@ -6,3 +6,7 @@ const SUB_DIRECTORY = "/blog-sample";
 const isProd = process.env.NODE_ENV == "production";
 
 export const BASE_PATH = isProd ? SUB_DIRECTORY : "";
+
+export const BASE_URL = process.env.URL
+  ? `https://${process.env.URL}`
+  : `http://localhost:${process.env.PORT || 3000}`;
