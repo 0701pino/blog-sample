@@ -30,6 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       URL_PREFIX: "/blog-sample"
+      URL: "0701pino.github.io"
     defaults:
       run:
         working-directory: ${{ github.workspace }}/next_app
