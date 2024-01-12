@@ -1,4 +1,4 @@
-import { BASE_URL, DESCRIPTION, TITLE } from "@/lib/config";
+import { BASE_PATH, BASE_URL, DESCRIPTION, TITLE } from "@/lib/config";
 import "./styles/globals.css";
 import type { Metadata } from "next";
 
@@ -20,14 +20,14 @@ export const metadata: Metadata = {
     siteName: TITLE,
     locale: "ja_JP",
     type: "website",
-    images: "/images/top.png",
+    images: `${BASE_PATH}/images/top.png`,
   },
   twitter: {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
     creator: "@0701pino",
-    images: "/images/top.png",
+    images: `${BASE_PATH}/images/top.png`,
   },
 };
 
