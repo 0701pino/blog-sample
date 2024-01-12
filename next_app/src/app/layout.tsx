@@ -1,4 +1,4 @@
-import { BASE_URL } from "@/lib/config";
+import { BASE_URL, DESCRIPTION, TITLE } from "@/lib/config";
 import "./styles/globals.css";
 import type { Metadata } from "next";
 
@@ -7,12 +7,28 @@ import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: {
-    default: "Pino Sample Blog",
-    template: "%s | Pino Sample Blog",
+    default: TITLE,
+    template: `%s | ${TITLE}`,
   },
-  description: "Next.jsの学習のために作成したサンプルブログサイトです。",
+  description: DESCRIPTION,
   metadataBase: new URL(BASE_URL),
   generator: "Next.js",
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: BASE_URL,
+    siteName: TITLE,
+    locale: "ja_JP",
+    type: "website",
+    images: "/images/top.png",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    creator: "@0701pino",
+    images: "/images/top.png",
+  },
 };
 
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {

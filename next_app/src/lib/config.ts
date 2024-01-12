@@ -10,3 +10,6 @@ export const BASE_PATH = isProd ? SUB_DIRECTORY : "";
 export const BASE_URL = process.env.URL
   ? `https://${process.env.URL}`
   : `http://localhost:${process.env.PORT || 3000}`;
+
+export const TITLE = "Pino Sample Blog";
+export const DESCRIPTION = "Next.jsの学習のために作成したサンプルブログサイトです。";
