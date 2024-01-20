@@ -17,10 +17,9 @@ const PostList: React.FC<PostListProps> = ({ posts: posts }) => {
         const { imageSrc, imageSize } = getImageAttributes(item.emoji, item.image);
 
         return (
-          <>
+          <div key={item.slug}>
             <Link href={"/post/" + item.slug} passHref>
               <div
-                key={item.slug}
                 className="flex flex-col rounded-lg bg-white overflow-hidden hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-600 cursor-pointer"
                 style={{ height: "auto" }}
               >
@@ -63,7 +62,7 @@ const PostList: React.FC<PostListProps> = ({ posts: posts }) => {
                 </div>
               </div>
             </Link>
-          </>
+          </div>
         );
       })}
     </div>
